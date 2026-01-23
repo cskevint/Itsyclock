@@ -70,17 +70,17 @@ cat > "${XML_PATH}" <<EOF
     xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle"
     xmlns:dc="http://purl.org/dc/elements/1.1/" >
   <channel>
-    <title>Itsycal Release Notes</title>
-    <link>https://s3.amazonaws.com/itsycal/itsycal.xml</link>
+    <title>Itsyclock Release Notes</title>
+    <link>https://s3.amazonaws.com/itsyclock/itsyclock.xml</link>
     <description>Most recent changes</description>
     <language>en</language>
     <item>
       <title>Version ${SHORT_VERSION_STRING}</title>
       <sparkle:minimumSystemVersion>11.0</sparkle:minimumSystemVersion>
-      <sparkle:releaseNotesLink>https://itsycal.s3.amazonaws.com/releasenotes.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink>https://itsyclock.s3.amazonaws.com/releasenotes.html</sparkle:releaseNotesLink>
       <pubDate>${DATE} +0000</pubDate>
       <enclosure
-          url="https://s3.amazonaws.com/itsycal/${ZIP_NAME}"
+          url="https://s3.amazonaws.com/itsyclock/${ZIP_NAME}"
           ${EDDSA_AND_FILESIZE}
           sparkle:version="${VERSION}"
           sparkle:shortVersionString="${SHORT_VERSION_STRING}"
@@ -93,5 +93,5 @@ EOF
 echo "Done!"
 echo ""
 
-open -R "${DEST_DIR}/itsycal.xml"
+open -R "${DEST_DIR}/itsyclock.xml"
 

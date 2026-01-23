@@ -57,10 +57,10 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Ensure the user has moved Itsycal to the /Applications folder.
-    // Having the user manually move Itsycal to /Applications turns off
+    // Ensure the user has moved Itsyclock to the /Applications folder.
+    // Having the user manually move Itsyclock to /Applications turns off
     // Gatekeeper Path Randomization (introduced in 10.12) and allows
-    // Itsycal to be updated with Sparkle. :P
+    // Itsyclock to be updated with Sparkle. :P
 #ifndef DEBUG
     [self checkIfRunFromApplicationsFolder];
 #endif
@@ -74,7 +74,7 @@
     [Sizer shared];
 
     // Create our Application Support folder if it doesn't exist.
-    // ~/Library/Application Support/com.mowglii.ItsycalApp/
+    // ~/Library/Application Support/com.mowglii.ItyclockApp/
     NSURL *url = [[NSFileManager.defaultManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] firstObject];
     if (url) {
         NSString *bundleID = NSBundle.mainBundle.bundleIdentifier;
@@ -101,7 +101,7 @@
     NSMenu *mainMenu = [NSMenu new];
     NSMenuItem *appMenuItem = [NSMenuItem new];
     NSMenu *appSubMenu = [NSMenu new];
-    [appSubMenu addItemWithTitle:NSLocalizedString(@"Quit Itsycal", @"") action:@selector(terminate:) keyEquivalent:@"q"];
+    [appSubMenu addItemWithTitle:NSLocalizedString(@"Quit Itsyclock", @"") action:@selector(terminate:) keyEquivalent:@"q"];
     appMenuItem.submenu = appSubMenu;
     [mainMenu addItem:appMenuItem];
     [NSApp setMainMenu:mainMenu];
@@ -161,25 +161,25 @@
     NSArray *applicationDirs = NSSearchPathForDirectoriesInDomains(NSApplicationDirectory, NSLocalDomainMask | NSUserDomainMask, YES);
     for (NSString *appDir in applicationDirs) {
         if ([bundlePath hasPrefix:appDir]) {
-            return; // Ok, Itsycal is being run from /Applications.
+            return; // Ok, Itsyclock is being run from /Applications.
         }
     }
-    // Itsycal is not being run from /Applications.
+    // Itsyclock is not being run from /Applications.
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
     NSAlert *alert = [NSAlert new];
-    alert.messageText = NSLocalizedString(@"Move Itsycal to the Applications folder", nil);
-    alert.informativeText = [NSLocalizedString(@"Itsycal must be run from the Applications folder in order to work properly.\n\nPlease quit Itsycal, move it to the Applications folder, and relaunch.", nil) stringByAppendingString:[NSString stringWithFormat:@"\n\n%@", bundlePath]];
+    alert.messageText = NSLocalizedString(@"Move Itsyclock to the Applications folder", nil);
+    alert.informativeText = [NSLocalizedString(@"Itsyclock must be run from the Applications folder in order to work properly.\n\nPlease quit Itsyclock, move it to the Applications folder, and relaunch.", nil) stringByAppendingString:[NSString stringWithFormat:@"\n\n%@", bundlePath]];
     alert.icon = [NSImage imageNamed:@"move"];
     alert.showsHelp = YES;
     alert.delegate = self;
-    [alert addButtonWithTitle:NSLocalizedString(@"Quit Itsycal", @"")];
+    [alert addButtonWithTitle:NSLocalizedString(@"Quit Itsyclock", @"")];
     [alert runModal];
     [NSApp terminate:nil];
 }
 
 - (BOOL)alertShowHelp:(NSAlert *)alert
 {
-    NSURL *url = [NSURL URLWithString:@"https://mowglii.com/itsycal/appfolder.html"];
+    NSURL *url = [NSURL URLWithString:@"https://mowglii.com/itsyclock/appfolder.html"];
     [[NSWorkspace sharedWorkspace] openURL:url];
     return YES;
 }
@@ -187,7 +187,7 @@
 #pragma mark -
 #pragma mark Weekend highlight fixup
 
-// Itsycal 0.11.1 moves away from using a trio of possible defaults
+// Itsyclock 0.11.1 moves away from using a trio of possible defaults
 // (HighlightWeekend, WeekendIsFridaySaturday, WeekendIsSaturdaySunday) and
 // a hardcoded list of countries with Fri/Sat weekends to the method
 // of allowing the user to specify highlighted DOWs. If the user had
@@ -216,7 +216,7 @@
     [defaults removeObjectForKey:@"WeekendIsSaturdaySunday"];
 }
 
-// Itsycal 0.11.11 uses ThemePreference instead of ThemeIndex to
+// Itsyclock 0.11.11 uses ThemePreference instead of ThemeIndex to
 // express the user's theme preference. ThemePreference can be
 // System in addition to explicitly Light or Dark.
 - (void)themeFixup

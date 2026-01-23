@@ -30,10 +30,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string>com.mowglii.ItsycalApp</string>
+			<string>com.mowglii.ItyclockApp</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>itsycal</string>
+				<string>itsyclock</string>
 			</array>
 		</dict>
 	</array>
@@ -46,11 +46,11 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSAppleEventsUsageDescription</key>
-	<string>Itsycal uses AppleEvents to open your calendar app to the selected day. You can change this setting in System Preferences › Security &amp; Privacy › Privacy</string>
+	<string>Itsyclock uses AppleEvents to access your system settings. You can change this setting in System Preferences › Security &amp; Privacy › Privacy</string>
 	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>Itsycal is more useful when it can display events from your calendars. You can change this setting in System Settings › Privacy &amp; Security › Calendars</string>
+	<string>Itsyclock shows multiple time zones. You can change this setting in System Settings › Privacy &amp; Security › Calendars</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>Itsycal is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy</string>
+	<string>Itsyclock shows multiple time zones. You can change this setting in System Preferences › Security &amp; Privacy › Privacy</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© 2012 − 2025 mowglii.com</string>
 	<key>NSPrincipalClass</key>
@@ -60,7 +60,7 @@
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://s3.amazonaws.com/itsycal/itsycal.xml</string>
+	<string>https://s3.amazonaws.com/itsyclock/itsyclock.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>TxKIjUS10OYKgZaAQlRvDjFNEc28hG82wtRWlcNUYSc=</string>
 	<key>SUScheduledCheckInterval</key>

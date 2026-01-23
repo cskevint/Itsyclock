@@ -4,12 +4,12 @@ maybe someone can learn something from looking at mine.
 
 = = = = = = = =
 
-Itsycal is a tiny calendar for your Mac's menu bar.
+Itsyclock is a menubar app that displays multiple time zones.
 
-If you want, it will display your calendar events as a
-companion to the Mac Calendar app. You can also create
-and delete (but not edit) events.
+You can configure which time zones are displayed, and it will
+read from your system's Clock.app settings. Times are displayed
+in 12-hour AM/PM format.
 
-For more info, see: http://www.mowglii.com/itsycal
+For more info, see: http://www.mowglii.com/itsyclock
 
 MIT Licensed - see License file
