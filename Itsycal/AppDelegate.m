@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "Itsycal.h"
 #import "ItsycalWindow.h"
-#import "ViewController.h"
+#import "ClocksViewController.h"
 #import "Themer.h"
 #import "Sizer.h"
 #import "MoUtils.h"
@@ -82,6 +82,8 @@
         [[NSFileManager defaultManager] createDirectoryAtURL:url withIntermediateDirectories:YES attributes:nil error:NULL];
     }
 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
     // 0.11.1 introduced a new way to highlight columns in the calendar.
     [self weekendHighlightFixup];
     
@@ -95,10 +97,32 @@
     // 0.14.1 introduces more menu bar icon types
     [self menuBarIconTypeFixup];
 
+    // Minimal main menu to avoid menu consistency warnings in LSUIElement mode.
+    NSMenu *mainMenu = [NSMenu new];
+    NSMenuItem *appMenuItem = [NSMenuItem new];
+    NSMenu *appSubMenu = [NSMenu new];
+    [appSubMenu addItemWithTitle:NSLocalizedString(@"Quit Itsycal", @"") action:@selector(terminate:) keyEquivalent:@"q"];
+    appMenuItem.submenu = appSubMenu;
+    [mainMenu addItem:appMenuItem];
+    [NSApp setMainMenu:mainMenu];
+
+    // Defaults for the menubar clocks app.
+    NSArray *defaultTimeZones = @[
+        NSTimeZone.localTimeZone.name,
+        @"America/New_York",
+        @"Europe/London",
+        @"Asia/Tokyo"
+    ];
+    [defaults registerDefaults:@{
+        kTimeZoneList: defaultTimeZones,
+        kUse24HourClock: @NO,
+        kShowSecondsInClock: @NO
+    }];
+
     // Register keyboard shortcut.
     [[MASShortcutBinder sharedBinder] setBindingOptions:@{NSValueTransformerNameBindingOption: MASDictionaryTransformerName}];
     [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:kKeyboardShortcut toAction:^{
-         [(ViewController *)self->_wc.contentViewController keyboardShortcutActivated];
+         [(ClocksViewController *)self->_wc.contentViewController keyboardShortcutActivated];
      }];
 
     // Establish the binding to NSUserDefaultsController. This call
@@ -106,7 +130,7 @@
     // used when initializing views.
     [SizePref bind:@"sizePreference" toObject:[NSUserDefaultsController sharedUserDefaultsController] withKeyPath:[@"values." stringByAppendingString:kSizePreference] options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
 
-    ViewController *vc = [ViewController new];
+    ClocksViewController *vc = [ClocksViewController new];
     _wc = [[NSWindowController alloc] initWithWindow:[ItsycalWindow  new]];
     _wc.contentViewController = vc;
     _wc.window.delegate = vc;
@@ -120,31 +144,8 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-    [(ViewController *)_wc.contentViewController removeStatusItem];
+    [(ClocksViewController *)_wc.contentViewController removeStatusItem];
     [[MASShortcutMonitor sharedMonitor] unregisterAllShortcuts];
-}
-
-- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls
-{
-    if (urls.count >= 1) {
-        // We can only handle showing one date at a time, so we pick the first one
-        NSURL *url = urls[0];
-        if ([url.host isEqualToString:@"date"] && url.pathComponents.count == 2) {
-            NSString *dateString = url.pathComponents[1];
-            
-            if ([dateString isEqualToString:@"now"]) {
-                [(ViewController *)_wc.contentViewController dateURLReceived:[NSDate new]];
-            } else {
-                NSDateFormatter *format = [NSDateFormatter new];
-                format.dateFormat = @"yyyy-MM-dd";
-                NSDate *date = [format dateFromString:dateString];
-                
-                if (date) {
-                    [(ViewController *)_wc.contentViewController dateURLReceived:date];
-                }
-            }
-        }
-    }
 }
 
 #pragma mark -

@@ -33,6 +33,9 @@ extern NSString * const kEnableMeetingButtonIndefinitely;
 extern NSString * const kDoNotDrawOutlineAroundCurrentMonth;
 extern NSString * const kShowDaysWithNoEventsInAgenda;
 extern NSString * const kShowEventPopoverOnHover;
+extern NSString * const kTimeZoneList;
+extern NSString * const kUse24HourClock;
+extern NSString * const kShowSecondsInClock;
 
 // Set an associated object on NSDate to indicate
 // whether of not this date has events.
