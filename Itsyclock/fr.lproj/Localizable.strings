@@ -18,7 +18,7 @@
 "15 minutes before" = "15 minutes avant";
 "30 minutes before" = "30 minutes avant";
 "31 days" = "31 jours";
-"About Itsycal" = "À propos de Itsycal";
+"About Itsyclock" = "À propos de Itsyclock";
 /* About prefs tab label */
 "About" = "À propos";
 "Add Location or Video Call" = "Ajouter un lieu ou un appel vidéo";
@@ -35,9 +35,9 @@
 "Calendar" = "Calendrier";
 "Calendar access denied.
 
-Itsycal is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy" = "L'accès au calendrier est refusée.
+Itsyclock is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy" = "L'accès au calendrier est refusée.
 
-Itsycal est plus utile quand il peut afficher les événements de vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.";
+Itsyclock est plus utile quand il peut afficher les événements de vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.";
 "Calendar access was denied." = "L'accès au calendrier est refusée.";
 "Cancel" = "Annuler";
 "Check for Updates…" = "Rechercher les mises à jour…";
@@ -74,20 +74,20 @@ Itsycal est plus utile quand il peut afficher les événements de vos calendrier
 "Help…" = "Aide…";
 "Hide icon" = "Masquer l'icône";
 "Highlight:" = "Mettre en évidence :";
-"Itsycal cannot create a new event unless there is at least one calendar you have permission to modify." = "Itsycal ne peut pas créer de nouvel événement si vous ne possédez pas au moins un calendrier avec la permission de modification.";
-"Itsycal is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Itsycal est plus utile lorsque vous lui permettent d'ajouter des événements à vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.";
-"Itsycal must be run from the Applications folder in order to work properly.
+"Itsyclock cannot create a new event unless there is at least one calendar you have permission to modify." = "Itsyclock ne peut pas créer de nouvel événement si vous ne possédez pas au moins un calendrier avec la permission de modification.";
+"Itsyclock is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "Itsyclock est plus utile lorsque vous lui permettent d'ajouter des événements à vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.";
+"Itsyclock must be run from the Applications folder in order to work properly.
 
-Please quit Itsycal, move it to the Applications folder, and relaunch." = "Itsycal doit être exécuté à partir du dossier Applications afin de fonctionner correctement.
+Please quit Itsyclock, move it to the Applications folder, and relaunch." = "Itsyclock doit être exécuté à partir du dossier Applications afin de fonctionner correctement.
 
-S'il vous plaît quitter Itsycal, le déplacer dans le dossier Applications, et relancer.";
+S'il vous plaît quitter Itsyclock, le déplacer dans le dossier Applications, et relancer.";
 "Keyboard shortcut" = "Raccourci clavier";
 "Launch at login" = "Lancer automatiquement à la connexion";
 /* Light theme name */
 "Light" = "Thème Clair";
 "Menu Bar" = "Barre de Menus";
 "Monday" = "lundi";
-"Move Itsycal to the Applications folder" = "Déplacer Itsycal dans le dossier Applications";
+"Move Itsyclock to the Applications folder" = "Déplacer Itsyclock dans le dossier Applications";
 /* Repeat ends never */
 "Never" = "jamais";
 "New Event" = "Nouvel événement";
@@ -102,9 +102,9 @@ S'il vous plaît quitter Itsycal, le déplacer dans le dossier Applications, et 
 "Open Calendar   ⌘O" = "Ouvrir l'application Calendrier   ⌘O";
 "Options" = "Options";
 "or" = "ou";
-"Pin Itsycal   P" = "Maintenir Itsycal visible   P";
+"Pin Itsyclock   P" = "Maintenir Itsyclock visible   P";
 "Preferences…" = "Préférences…";
-"Quit Itsycal" = "Quitter Itsycal";
+"Quit Itsyclock" = "Quitter Itsyclock";
 "Repeat:" = "Récurrence:";
 "Saturday" = "samedi";
 "Save Event" = "Enregistrer l'événement";

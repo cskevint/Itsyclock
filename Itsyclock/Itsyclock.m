@@ -1,12 +1,12 @@
 //
-//  Itsycal.m
-//  Itsycal
+//  Itsyclock.m
+//  Itsyclock
 //
 //  Created by Sanjay Madan on 2/3/15.
 //  Copyright (c) 2015 mowglii.com. All rights reserved.
 //
 
-#import "Itsycal.h"
+#import "Itsyclock.h"
 
 // NSUserDefaults keys
 NSString * const kPinItsycal = @"PinItsycal";

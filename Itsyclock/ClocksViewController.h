@@ -1,6 +1,6 @@
 //
 //  ClocksViewController.h
-//  Itsycal
+//  Itsyclock
 //
 //  A lightweight menubar controller that lists multiple time zones.
 //

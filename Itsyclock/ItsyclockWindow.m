@@ -1,12 +1,12 @@
 //
-//  ItsycalWindow.m
-//  Itsycal
+//  ItsyclockWindow.m
+//  Itsyclock
 //
 //  Created by Sanjay Madan on 12/14/14.
 //  Copyright (c) 2014 mowglii.com. All rights reserved.
 //
 
-#import "ItsycalWindow.h"
+#import "ItsyclockWindow.h"
 #import "Themer.h"
 
 static const CGFloat kMinimumSpaceBetweenWindowAndScreenEdge = 10;
@@ -18,18 +18,18 @@ static const CGFloat kWindowTopMargin    = kCornerRadius + kBorderWidth + kArrow
 static const CGFloat kWindowSideMargin   = kMarginWidth  + kBorderWidth;
 static const CGFloat kWindowBottomMargin = kCornerRadius + kBorderWidth;
 
-@interface ItsycalWindowFrameView : NSView
+@interface ItsyclockWindowFrameView : NSView
 @property (nonatomic, assign) CGFloat arrowMidX;
 @end
 
 #pragma mark -
-#pragma mark ItsycalWindow
+#pragma mark ItsyclockWindow
 
 // =========================================================================
-// ItsycalWindow
+// ItsyclockWindow
 // =========================================================================
 
-@implementation ItsycalWindow
+@implementation ItsyclockWindow
 {
     NSView *_childContentView;
 }
@@ -72,9 +72,9 @@ static const CGFloat kWindowBottomMargin = kCornerRadius + kBorderWidth;
     if ([_childContentView isEqualTo:aView]) {
         return;
     }
-    ItsycalWindowFrameView *frameView = [super contentView];
+    ItsyclockWindowFrameView *frameView = [super contentView];
     if (!frameView) {
-        frameView = [[ItsycalWindowFrameView alloc] initWithFrame:NSZeroRect];
+        frameView = [[ItsyclockWindowFrameView alloc] initWithFrame:NSZeroRect];
         frameView.translatesAutoresizingMaskIntoConstraints = YES;
         frameView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
         [super setContentView:frameView];
@@ -133,7 +133,7 @@ static const CGFloat kWindowBottomMargin = kCornerRadius + kBorderWidth;
     [self setFrameTopLeftPoint:NSMakePoint(x, y)];
 
     // Tell the frame view where to draw the arrow.
-    ItsycalWindowFrameView *frameView = [super contentView];
+    ItsyclockWindowFrameView *frameView = [super contentView];
     // We call super because we want the midX for the frame view,
     // not the _childContentView, since we use the midX to draw
     // the frame view.
@@ -146,13 +146,13 @@ static const CGFloat kWindowBottomMargin = kCornerRadius + kBorderWidth;
 @end
 
 #pragma mark -
-#pragma mark ItsycalWindowFrameView
+#pragma mark ItsyclockWindowFrameView
 
 // =========================================================================
-// ItsycalWindowFrameView
+// ItsyclockWindowFrameView
 // =========================================================================
 
-@implementation ItsycalWindowFrameView
+@implementation ItsyclockWindowFrameView
 
 - (void)drawRect:(NSRect)dirtyRect
 {
@@ -182,7 +182,7 @@ static const CGFloat kWindowBottomMargin = kCornerRadius + kBorderWidth;
     
     // Append the arrow to the body if its right ege is inside
     // the right edge of the body (taking into account the corner
-    // radius). This accounts for the edge-case where Itsycal is
+    // radius). This accounts for the edge-case where Itsyclock is
     // all the way to the right in the menu bar. This is possible
     // if the user has a 3rd party app like Bartender.
     CGFloat curveOffset = 5;

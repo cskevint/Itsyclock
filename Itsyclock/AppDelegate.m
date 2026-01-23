@@ -1,14 +1,14 @@
 //
 //  AppDelegate.m
-//  Itsycal
+//  Itsyclock
 //
 //  Created by Sanjay Madan on 2/4/15.
 //  Copyright (c) 2015 mowglii.com. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "Itsycal.h"
-#import "ItsycalWindow.h"
+#import "Itsyclock.h"
+#import "ItsyclockWindow.h"
 #import "ClocksViewController.h"
 #import "Themer.h"
 #import "Sizer.h"
@@ -131,7 +131,7 @@
     [SizePref bind:@"sizePreference" toObject:[NSUserDefaultsController sharedUserDefaultsController] withKeyPath:[@"values." stringByAppendingString:kSizePreference] options:@{NSContinuouslyUpdatesValueBindingOption: @(YES)}];
 
     ClocksViewController *vc = [ClocksViewController new];
-    _wc = [[NSWindowController alloc] initWithWindow:[ItsycalWindow  new]];
+    _wc = [[NSWindowController alloc] initWithWindow:[ItsyclockWindow  new]];
     _wc.contentViewController = vc;
     _wc.window.delegate = vc;
     
@@ -245,7 +245,7 @@
 //   0 == solid round rect (default)
 //   1 == outlined round rect (formerly kUseOutlineIcon == YES)
 //   2 == generic calendar icon (new)
-//   3 == Itsycal icon (new)
+//   3 == Itsyclock icon (new)
 // As a result, kUseOutlineIcon is no longer used.
 - (void)menuBarIconTypeFixup
 {

@@ -1,6 +1,6 @@
 //
-//  Itsycal.h
-//  Itsycal
+//  Itsyclock.h
+//  Itsyclock
 //
 //  Created by Sanjay Madan on 2/3/15.
 //  Copyright (c) 2015 mowglii.com. All rights reserved.

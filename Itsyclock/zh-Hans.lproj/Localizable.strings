@@ -18,7 +18,7 @@
 "15 minutes before" = "15 分钟前";
 "30 minutes before" = "30 分钟前";
 "31 days" = "31 天";
-"About Itsycal" = "关于 Itsycal";
+"About Itsyclock" = "关于 Itsyclock";
 /* About prefs tab label */
 "About" = "关于";
 "Add Location or Video Call" = "添加位置或视频通话";
@@ -35,9 +35,9 @@
 "Calendar" = "日历";
 "Calendar access denied.
 
-Itsycal is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy" = "日历访问被拒绝。
+Itsyclock is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy" = "日历访问被拒绝。
 
-当 Itsycal 可以显示你的日历事件时会更好用。你可以在 “系统偏好设置>安全隐私>隐私” 中更改此设置。";
+当 Itsyclock 可以显示你的日历事件时会更好用。你可以在 “系统偏好设置>安全隐私>隐私” 中更改此设置。";
 "Calendar access was denied." = "日历访问被拒绝。";
 "Cancel" = "取消";
 "Check for Updates…" = "检查更新…";
@@ -74,20 +74,20 @@ Itsycal is more useful when it can display events from your calendars. You can c
 "Help…" = "帮助…";
 "Hide icon" = "隐藏图标";
 "Highlight:" = "高亮：";
-"Itsycal cannot create a new event unless there is at least one calendar you have permission to modify." = "除非有至少一个有权限修改的日历，否则 Itsycal 无法创建新事件。";
-"Itsycal is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "当你允许 Itsycal 将事件添加到你的日历中时会更好用。 你可以在 “系统偏好设置>安全隐私>隐私” 中更改此设置。";
-"Itsycal must be run from the Applications folder in order to work properly.
+"Itsyclock cannot create a new event unless there is at least one calendar you have permission to modify." = "除非有至少一个有权限修改的日历，否则 Itsyclock 无法创建新事件。";
+"Itsyclock is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security & Privacy › Privacy." = "当你允许 Itsyclock 将事件添加到你的日历中时会更好用。 你可以在 “系统偏好设置>安全隐私>隐私” 中更改此设置。";
+"Itsyclock must be run from the Applications folder in order to work properly.
 
-Please quit Itsycal, move it to the Applications folder, and relaunch." = "必须从应用程序文件夹运行 Itsycal 才能正常工作。
+Please quit Itsyclock, move it to the Applications folder, and relaunch." = "必须从应用程序文件夹运行 Itsyclock 才能正常工作。
 
-请退出 Itsycal，将其移动到应用程序文件夹，然后重新启动。";
+请退出 Itsyclock，将其移动到应用程序文件夹，然后重新启动。";
 "Keyboard shortcut" = "键盘快捷键";
 "Launch at login" = "登录时启动";
 /* Light theme name */
 "Light" = "浅色";
 "Menu Bar" = "菜单栏";
 "Monday" = "星期一";
-"Move Itsycal to the Applications folder" = "将 Itsycal 移动到应用程序文件夹";
+"Move Itsyclock to the Applications folder" = "将 Itsyclock 移动到应用程序文件夹";
 /* Repeat ends never */
 "Never" = "从不";
 "New Event" = "新事件";
@@ -102,9 +102,9 @@ Please quit Itsycal, move it to the Applications folder, and relaunch." = "必�
 "Open Calendar   ⌘O" = "打开日历   ⌘O";
 "Options" = "选项";
 "or" = "or";
-"Pin Itsycal   P" = "固定 Itsycal   P";
+"Pin Itsyclock   P" = "固定 Itsyclock   P";
 "Preferences…" = "偏好设置…";
-"Quit Itsycal" = "退出 Itsycal";
+"Quit Itsyclock" = "退出 Itsyclock";
 "Repeat:" = "重复：";
 "Saturday" = "星期六";
 "Settings…" = "设置…";

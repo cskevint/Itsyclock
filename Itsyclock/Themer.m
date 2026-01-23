@@ -4,7 +4,7 @@
 //
 
 #import "Themer.h"
-#import "Itsycal.h"
+#import "Itsyclock.h"
 #import "MoUtils.h"
 
 // NSUserDefaults key

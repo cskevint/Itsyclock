@@ -4,13 +4,13 @@ GREEN="\033[0;32m"
 RED="\033[0;31m"
 NC="\033[0m" # No Color
 
-# If Itsycal.app is not found on the Desktop, quit.
-APP_PATH="${HOME}/Desktop/Itsycal.app"
+# If Itsyclock.app is not found on the Desktop, quit.
+APP_PATH="${HOME}/Desktop/Itsyclock.app"
 if [ ! -d "${APP_PATH}" ]
 then
     echo "\n"
     echo "  + ${RED}NOT FOUND:${NC} ${APP_PATH}"
-    echo "  + Export notarized Itsycal.app to Desktop."
+    echo "  + Export notarized Itsyclock.app to Desktop."
     echo "  + See BUILD.md for instructions."
     echo "\n"
     exit 1
@@ -22,12 +22,12 @@ VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleVersion" ${PLIST_FILE})
 SHORT_VERSION_STRING=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ${PLIST_FILE})
 
 # Set up file names and paths.
-ZIP_NAME="Itsycal-${SHORT_VERSION_STRING}.zip"
+ZIP_NAME="Itsyclock-${SHORT_VERSION_STRING}.zip"
 ZIP_NAME=${ZIP_NAME// /-}
-DEST_DIR="${HOME}/Desktop/Itsycal-${SHORT_VERSION_STRING}"
+DEST_DIR="${HOME}/Desktop/Itsyclock-${SHORT_VERSION_STRING}"
 XML_PATH="${DEST_DIR}/itsycal.xml"
 ZIP_PATH1="${DEST_DIR}/${ZIP_NAME}"
-ZIP_PATH2="${DEST_DIR}/Itsycal.zip"
+ZIP_PATH2="${DEST_DIR}/Itsyclock.zip"
 
 # Run some diagnostics so we can see all is ok."
 echo ""
@@ -44,7 +44,7 @@ echo "Making zips and appcast for ${GREEN}${SHORT_VERSION_STRING} (${VERSION})${
 rm -frd "${DEST_DIR}"
 mkdir -p "${DEST_DIR}"
 
-# Compress Itsycal.app and make a copy without version suffix.
+# Compress Itsyclock.app and make a copy without version suffix.
 ditto -c -k --sequesterRsrc --keepParent "${APP_PATH}" "${ZIP_PATH1}"
 cp "${ZIP_PATH1}" "${ZIP_PATH2}"
 

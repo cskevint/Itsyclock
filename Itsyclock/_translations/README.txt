@@ -1,4 +1,4 @@
-The Itsycal directory contains .xliff files exported from
+The Itsyclock directory contains .xliff files exported from
 Xcode and then filled in with appropriate translations.
 The files were then imported back to Xcode.
 

@@ -1,13 +1,13 @@
 //
 //  ClocksViewController.m
-//  Itsycal
+//  Itsyclock
 //
 //  Menubar UI that shows multiple clocks for configured time zones.
 //
 
 #import "ClocksViewController.h"
-#import "Itsycal.h"
-#import "ItsycalWindow.h"
+#import "Itsyclock.h"
+#import "ItsyclockWindow.h"
 #import "MoButton.h"
 
 static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
@@ -80,7 +80,7 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
     _btnPin.alternateImage = [NSImage imageNamed:@"btnPinAlt"];
     _btnPin.target = self;
     _btnPin.action = @selector(pin:);
-    _btnPin.toolTip = NSLocalizedString(@"Pin Itsycal", @"Pin popover");
+    _btnPin.toolTip = NSLocalizedString(@"Pin Itsyclock", @"Pin popover");
     [_footer addArrangedSubview:_btnPin];
 
     _btnGear = [MoButton new];
@@ -441,9 +441,9 @@ static NSString *entryForTZ(NSString *key, NSString *tzID, NSArray<NSDictionary 
 
 #pragma mark - Window
 
-- (ItsycalWindow *)clocksWindow
+- (ItsyclockWindow *)clocksWindow
 {
-    return (ItsycalWindow *)self.view.window;
+    return (ItsyclockWindow *)self.view.window;
 }
 
 - (void)showClocksWindow
@@ -499,7 +499,7 @@ static NSString *entryForTZ(NSString *key, NSString *tzID, NSArray<NSDictionary 
     NSMenu *menu = [NSMenu new];
     [menu addItemWithTitle:NSLocalizedString(@"Date & Time Settings...", @"Open Date & Time settings") action:@selector(openDateAndTimePrefs:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
-    [menu addItemWithTitle:NSLocalizedString(@"Quit Itsycal", @"Quit") action:@selector(terminate:) keyEquivalent:@""];
+    [menu addItemWithTitle:NSLocalizedString(@"Quit Itsyclock", @"Quit") action:@selector(terminate:) keyEquivalent:@""];
 
     NSPoint p = NSMakePoint(NSMinX(_btnGear.bounds), NSMaxY(_btnGear.bounds) + 2);
     [menu popUpMenuPositioningItem:nil atLocation:p inView:_btnGear];

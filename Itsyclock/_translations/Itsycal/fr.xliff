@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
-    <file original="Itsycal/Base.lproj/MainMenu.xib" source-language="en" datatype="plaintext" target-language="fr">
+    <file original="Itsyclock/Base.lproj/MainMenu.xib" source-language="en" datatype="plaintext" target-language="fr">
         <header>
             <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"></tool>
         </header>
         <body>
             <trans-unit id="1Xt-HY-uBw.title">
-                <source>Itsycal</source>
-                <note>Class = "NSMenuItem"; title = "Itsycal"; ObjectID = "1Xt-HY-uBw";</note>
+                <source>Itsyclock</source>
+                <note>Class = "NSMenuItem"; title = "Itsyclock"; ObjectID = "1Xt-HY-uBw";</note>
             </trans-unit>
             <trans-unit id="4sb-4s-VLi.title">
-                <source>Quit Itsycal</source>
-                <note>Class = "NSMenuItem"; title = "Quit Itsycal"; ObjectID = "4sb-4s-VLi";</note>
+                <source>Quit Itsyclock</source>
+                <note>Class = "NSMenuItem"; title = "Quit Itsyclock"; ObjectID = "4sb-4s-VLi";</note>
             </trans-unit>
             <trans-unit id="7wR-SZ-Nqc.title">
                 <source>Close</source>
@@ -58,8 +58,8 @@
                 <note>Class = "NSMenuItem"; title = "File"; ObjectID = "dMs-cI-mzQ";</note>
             </trans-unit>
             <trans-unit id="uQy-DD-JDr.title">
-                <source>Itsycal</source>
-                <note>Class = "NSMenu"; title = "Itsycal"; ObjectID = "uQy-DD-JDr";</note>
+                <source>Itsyclock</source>
+                <note>Class = "NSMenu"; title = "Itsyclock"; ObjectID = "uQy-DD-JDr";</note>
             </trans-unit>
             <trans-unit id="vKD-cH-8sx.title">
                 <source>Select All</source>
@@ -75,7 +75,7 @@
             </trans-unit>
         </body>
     </file>
-    <file original="Itsycal/Info.plist" source-language="en" datatype="plaintext" target-language="fr">
+    <file original="Itsyclock/Info.plist" source-language="en" datatype="plaintext" target-language="fr">
         <header>
             <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"></tool>
         </header>
@@ -91,7 +91,7 @@
             </trans-unit>
         </body>
     </file>
-    <file original="Itsycal/Localizable.strings" source-language="en" datatype="plaintext" target-language="fr">
+    <file original="Itsyclock/Localizable.strings" source-language="en" datatype="plaintext" target-language="fr">
         <header>
             <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="8.2.1" build-num="8C1002"></tool>
         </header>
@@ -211,13 +211,13 @@
                 <target>Rechercher automatiquement le mises à jour</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
-            <trans-unit id="Calendar access denied.\n\nItsycal is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy">
+            <trans-unit id="Calendar access denied.\n\nItsyclock is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy">
                 <source>Calendar access denied.
 
-Itsycal is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy</source>
+Itsyclock is more useful when it can display events from your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy</source>
                 <target>L'accès au calendrier est refusée.
 
-Itsycal est plus utile quand il peut afficher les événements de vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.</target>
+Itsyclock est plus utile quand il peut afficher les événements de vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
             <trans-unit id="Calendar access was denied.">
@@ -325,18 +325,18 @@ Itsycal est plus utile quand il peut afficher les événements de vos calendrier
                 <target>Mettre en évidence les weekends</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
-            <trans-unit id="Itsycal is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy.">
-                <source>Itsycal is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy.</source>
-                <target>Itsycal est plus utile lorsque vous lui permettent d'ajouter des événements à vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.</target>
+            <trans-unit id="Itsyclock is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy.">
+                <source>Itsyclock is more useful when you allow it to add events to your calendars. You can change this setting in System Preferences › Security &amp; Privacy › Privacy.</source>
+                <target>Itsyclock est plus utile lorsque vous lui permettent d'ajouter des événements à vos calendriers. Vous pouvez modifier ce paramètre dans les Préférences Système › Sécurité et confidentialité › Confidentialité.</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
-            <trans-unit id="Itsycal must be run from the Applications folder in order to work properly.\n\nPlease quit Itsycal, move it to the Applications folder, and relaunch.">
-                <source>Itsycal must be run from the Applications folder in order to work properly.
+            <trans-unit id="Itsyclock must be run from the Applications folder in order to work properly.\n\nPlease quit Itsyclock, move it to the Applications folder, and relaunch.">
+                <source>Itsyclock must be run from the Applications folder in order to work properly.
 
-Please quit Itsycal, move it to the Applications folder, and relaunch.</source>
-                <target>Itsycal doit être exécuté à partir du dossier Applications afin de fonctionner correctement.
+Please quit Itsyclock, move it to the Applications folder, and relaunch.</source>
+                <target>Itsyclock doit être exécuté à partir du dossier Applications afin de fonctionner correctement.
 
-S'il vous plaît quitter Itsycal, le déplacer dans le dossier Applications, et relancer.</target>
+S'il vous plaît quitter Itsyclock, le déplacer dans le dossier Applications, et relancer.</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
             <trans-unit id="Keyboard shortcut">
@@ -354,9 +354,9 @@ S'il vous plaît quitter Itsycal, le déplacer dans le dossier Applications, et 
                 <target>lundi</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
-            <trans-unit id="Move Itsycal to the Applications folder">
-                <source>Move Itsycal to the Applications folder</source>
-                <target>Déplacer Itsycal dans le dossier Applications</target>
+            <trans-unit id="Move Itsyclock to the Applications folder">
+                <source>Move Itsyclock to the Applications folder</source>
+                <target>Déplacer Itsyclock dans le dossier Applications</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
             <trans-unit id="Never">
@@ -400,9 +400,9 @@ S'il vous plaît quitter Itsycal, le déplacer dans le dossier Applications, et 
                 <target>Options</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
-            <trans-unit id="Pin Itsycal... P">
-                <source>Pin Itsycal... P</source>
-                <target>Maintenir Itsycal visible… P</target>
+            <trans-unit id="Pin Itsyclock... P">
+                <source>Pin Itsyclock... P</source>
+                <target>Maintenir Itsyclock visible… P</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
             <trans-unit id="Preferences...">
@@ -410,9 +410,9 @@ S'il vous plaît quitter Itsycal, le déplacer dans le dossier Applications, et 
                 <target>Préférences…</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
-            <trans-unit id="Quit Itsycal">
-                <source>Quit Itsycal</source>
-                <target>Quitter Itsycal</target>
+            <trans-unit id="Quit Itsyclock">
+                <source>Quit Itsyclock</source>
+                <target>Quitter Itsyclock</target>
                 <note>No comment provided by engineer.</note>
             </trans-unit>
             <trans-unit id="Repeat:">
