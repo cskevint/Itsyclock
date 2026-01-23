@@ -8,6 +8,7 @@
 #import "ClocksViewController.h"
 #import "Itsycal.h"
 #import "ItsycalWindow.h"
+#import "MoButton.h"
 
 static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
 
@@ -20,6 +21,10 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
     NSArray<NSDictionary *> *_clockEntries; // each: @{ "tz": tzID, "label": displayName }
     NSStatusItem *_statusItem;
     NSStackView *_stack;
+    NSStackView *_rowsStack;
+    NSStackView *_footer;
+    MoButton *_btnPin;
+    MoButton *_btnGear;
     NSTimer *_timer;
     NSDateFormatter *_menuFormatter;
     NSDateFormatter *_rowFormatter;
@@ -41,7 +46,7 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
 
     _stack = [NSStackView new];
     _stack.orientation = NSUserInterfaceLayoutOrientationVertical;
-    _stack.spacing = 6;
+    _stack.spacing = 8;
 #ifdef NSStackViewAlignmentLeading
     _stack.alignment = NSStackViewAlignmentLeading;
 #else
@@ -49,12 +54,56 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
 #endif
     _stack.translatesAutoresizingMaskIntoConstraints = NO;
 
+    _rowsStack = [NSStackView new];
+    _rowsStack.orientation = NSUserInterfaceLayoutOrientationVertical;
+    _rowsStack.spacing = 0;
+#ifdef NSStackViewAlignmentLeading
+    _rowsStack.alignment = NSStackViewAlignmentLeading;
+#else
+    _rowsStack.alignment = NSLayoutAttributeLeading; // fallback for older SDKs
+#endif
+    _rowsStack.translatesAutoresizingMaskIntoConstraints = NO;
+
+    _footer = [NSStackView new];
+    _footer.orientation = NSUserInterfaceLayoutOrientationHorizontal;
+    _footer.spacing = 6;
+#ifdef NSStackViewAlignmentCenterY
+    _footer.alignment = NSStackViewAlignmentCenterY;
+#else
+    _footer.alignment = NSLayoutAttributeCenterY; // fallback for older SDKs
+#endif
+    _footer.translatesAutoresizingMaskIntoConstraints = NO;
+
+    _btnPin = [MoButton new];
+    _btnPin.buttonType = NSButtonTypeToggle;
+    _btnPin.image = [NSImage imageNamed:@"btnPin"];
+    _btnPin.alternateImage = [NSImage imageNamed:@"btnPinAlt"];
+    _btnPin.target = self;
+    _btnPin.action = @selector(pin:);
+    _btnPin.toolTip = NSLocalizedString(@"Pin Itsycal", @"Pin popover");
+    [_footer addArrangedSubview:_btnPin];
+
+    _btnGear = [MoButton new];
+    _btnGear.buttonType = NSButtonTypeMomentaryChange;
+    _btnGear.image = [NSImage imageNamed:@"btnOpt"];
+    _btnGear.target = self;
+    _btnGear.action = @selector(showOptionsMenu:);
+    _btnGear.toolTip = NSLocalizedString(@"Options", @"Options menu");
+    [_footer addArrangedSubview:_btnGear];
+
+    [_stack addArrangedSubview:_rowsStack];
+    [_stack addArrangedSubview:_footer];
+
     [v addSubview:_stack];
     [NSLayoutConstraint activateConstraints:@[
         [_stack.leadingAnchor constraintEqualToAnchor:v.leadingAnchor constant:12],
         [_stack.trailingAnchor constraintEqualToAnchor:v.trailingAnchor constant:-12],
         [_stack.topAnchor constraintEqualToAnchor:v.topAnchor constant:12],
         [_stack.bottomAnchor constraintEqualToAnchor:v.bottomAnchor constant:-12],
+        [_rowsStack.leadingAnchor constraintEqualToAnchor:_stack.leadingAnchor],
+        [_rowsStack.trailingAnchor constraintEqualToAnchor:_stack.trailingAnchor],
+        [_footer.leadingAnchor constraintEqualToAnchor:_stack.leadingAnchor],
+        [_footer.trailingAnchor constraintEqualToAnchor:_stack.trailingAnchor]
     ]];
 
     self.view = v;
@@ -81,6 +130,14 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
     [nc addObserver:self selector:@selector(statusItemMoved:) name:NSWindowDidResizeNotification object:_statusItem.button.window];
     [nc addObserver:self selector:@selector(systemClockChanged:) name:NSSystemClockDidChangeNotification object:nil];
     [nc addObserver:self selector:@selector(systemClockChanged:) name:NSSystemTimeZoneDidChangeNotification object:nil];
+}
+
+- (void)viewDidAppear
+{
+    [super viewDidAppear];
+    BOOL pinned = [[NSUserDefaults standardUserDefaults] boolForKey:kPinItsycal];
+    _btnPin.state = pinned ? NSControlStateValueOn : NSControlStateValueOff;
+    [self updatePinButtonAppearance];
 }
 
 #pragma mark - Setup
@@ -256,8 +313,8 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
 
 - (void)rebuildRows
 {
-    for (NSView *view in _stack.arrangedSubviews) {
-        [_stack removeArrangedSubview:view];
+    for (NSView *view in [_rowsStack.arrangedSubviews copy]) {
+        [_rowsStack removeArrangedSubview:view];
         [view removeFromSuperview];
     }
     for (NSDictionary *entry in _clockEntries) {
@@ -292,9 +349,9 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
         [row addArrangedSubview:cityLabel];
         [row addArrangedSubview:timeLabel];
 
-        [_stack addArrangedSubview:row];
-        [row.leadingAnchor constraintEqualToAnchor:_stack.leadingAnchor].active = YES;
-        [row.trailingAnchor constraintEqualToAnchor:_stack.trailingAnchor].active = YES;
+        [_rowsStack addArrangedSubview:row];
+        [row.leadingAnchor constraintEqualToAnchor:_rowsStack.leadingAnchor].active = YES;
+        [row.trailingAnchor constraintEqualToAnchor:_rowsStack.trailingAnchor].active = YES;
 
         // Pin columns for consistent alignment.
         [cityLabel.leadingAnchor constraintEqualToAnchor:row.leadingAnchor].active = YES;
@@ -311,7 +368,7 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
         _clockEntries = sorted;
         [self rebuildRows];
     }
-    for (NSView *row in _stack.arrangedSubviews) {
+    for (NSView *row in _rowsStack.arrangedSubviews) {
         if (![row isKindOfClass:[NSStackView class]]) continue;
         NSArray *subviews = ((NSStackView *)row).arrangedSubviews;
         if (subviews.count < 2) continue;
@@ -418,6 +475,42 @@ static NSString *entryForTZ(NSString *key, NSString *tzID, NSArray<NSDictionary 
     });
 }
 
+#pragma mark - Actions
+
+- (void)pin:(id)sender
+{
+    BOOL pinned = (_btnPin.state == NSControlStateValueOn);
+    [[NSUserDefaults standardUserDefaults] setBool:pinned forKey:kPinItsycal];
+    [self updatePinButtonAppearance];
+    if (pinned) {
+        [[self clocksWindow] makeKeyAndOrderFront:self];
+    }
+}
+
+- (void)updatePinButtonAppearance
+{
+    BOOL pinned = (_btnPin.state == NSControlStateValueOn);
+    NSImage *img = [NSImage imageNamed:pinned ? @"btnPinAlt" : @"btnPin"];
+    [_btnPin setImage:img];
+}
+
+- (void)showOptionsMenu:(id)sender
+{
+    NSMenu *menu = [NSMenu new];
+    [menu addItemWithTitle:NSLocalizedString(@"Date & Time Settings...", @"Open Date & Time settings") action:@selector(openDateAndTimePrefs:) keyEquivalent:@""];
+    [menu addItem:[NSMenuItem separatorItem]];
+    [menu addItemWithTitle:NSLocalizedString(@"Quit Itsycal", @"Quit") action:@selector(terminate:) keyEquivalent:@""];
+
+    NSPoint p = NSMakePoint(NSMinX(_btnGear.bounds), NSMaxY(_btnGear.bounds) + 2);
+    [menu popUpMenuPositioningItem:nil atLocation:p inView:_btnGear];
+}
+
+- (void)openDateAndTimePrefs:(id)sender
+{
+    NSURL *url = [NSURL URLWithString:@"x-apple.systempreferences:com.apple.preference.datetime"];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
 #pragma mark - Notifications
 
 - (void)systemClockChanged:(NSNotification *)note
@@ -429,7 +522,9 @@ static NSString *entryForTZ(NSString *key, NSString *tzID, NSArray<NSDictionary 
 
 - (void)windowDidResignKey:(NSNotification *)notification
 {
-    [self hideClocksWindow];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kPinItsycal]) {
+        [self hideClocksWindow];
+    }
 }
 
 #pragma mark - Keyboard shortcut

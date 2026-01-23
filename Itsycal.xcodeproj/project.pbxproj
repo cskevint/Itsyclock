@@ -423,36 +423,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				920D6D51266A83AC00498E19 /* MoLoginItem.m in Sources */,
-				9242A5921A82A40B005AA4B3 /* MoCalGrid.m in Sources */,
-				92658E621A9DBD8E002AE86C /* EventViewController.m in Sources */,
-				922232CD1A8DF672003BFAD9 /* EventCenter.m in Sources */,
-				920B5D7C2B4D10B6004A10D3 /* DatePickerVC.m in Sources */,
-				926A6D8F1E3EC89100AAA991 /* PrefsVC.m in Sources */,
 				922D9B261DC7A1CA0050AB2F /* MoUtils.m in Sources */,
 				9242A5651A82A136005AA4B3 /* main.m in Sources */,
 				92B28CCF210BD17500485AE2 /* Sizer.m in Sources */,
-				9278CADB1A990462004B6BB9 /* MoTableView.m in Sources */,
-				929223EB1E2D6E0900F1A119 /* HighlightPicker.m in Sources */,
-				925B47181A93B63100E0329A /* MoCalToolTipWC.m in Sources */,
 				9242A5871A82A1A1005AA4B3 /* ItsycalWindow.m in Sources */,
-				923E63512AB7FAD7007935A7 /* IconIsConfigurableTransformer.m in Sources */,
-				92CDDE7B1A955D7F00D7675C /* AgendaViewController.m in Sources */,
 				9261EB301EEF447500DCFFC4 /* Themer.m in Sources */,
-				922B6BBB1A85E0EC00DEA9CD /* MoTextField.m in Sources */,
-				9215AD4C1E3AECA700317FAE /* MoVFLHelper.m in Sources */,
-				9242A5901A82A40B005AA4B3 /* MoDate.m in Sources */,
-				925B471B1A93CD2A00E0329A /* TooltipViewController.m in Sources */,
-				921E62D01E26B9D2007B029F /* PrefsAppearanceVC.m in Sources */,
 				9242A5961A82BE5E005AA4B3 /* Itsycal.m in Sources */,
-				9242A5931A82A40B005AA4B3 /* MoCalendar.m in Sources */,
-				9242A5911A82A40B005AA4B3 /* MoCalCell.m in Sources */,
-				9224B0751A8BE75500D63030 /* MoButton.m in Sources */,
 				93A1F1022CE0B10000ABCD01 /* ClocksViewController.m in Sources */,
-				924C518C1E5F721C0049E3A9 /* MoCalResizeHandle.m in Sources */,
-				921E62CD1E26B3EA007B029F /* PrefsGeneralVC.m in Sources */,
 				9242A5631A82A136005AA4B3 /* AppDelegate.m in Sources */,
-				921E62D31E26E038007B029F /* PrefsAboutVC.m in Sources */,
+				9224B0751A8BE75500D63030 /* MoButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
