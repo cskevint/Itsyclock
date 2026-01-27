@@ -538,12 +538,35 @@ static NSString *entryForTZ(NSString *key, NSString *tzID, NSArray<NSDictionary 
 - (void)showOptionsMenu:(id)sender
 {
     NSMenu *menu = [NSMenu new];
+    [menu addItemWithTitle:NSLocalizedString(@"Open Clock.app", @"Open Clock application") action:@selector(openClockApp:) keyEquivalent:@""];
+    [menu addItem:[NSMenuItem separatorItem]];
     [menu addItemWithTitle:NSLocalizedString(@"Date & Time Settings...", @"Open Date & Time settings") action:@selector(openDateAndTimePrefs:) keyEquivalent:@""];
     [menu addItem:[NSMenuItem separatorItem]];
     [menu addItemWithTitle:NSLocalizedString(@"Quit Itsyclock", @"Quit") action:@selector(terminate:) keyEquivalent:@""];
 
     NSPoint p = NSMakePoint(NSMinX(_btnGear.bounds), NSMaxY(_btnGear.bounds) + 2);
     [menu popUpMenuPositioningItem:nil atLocation:p inView:_btnGear];
+}
+
+- (void)openClockApp:(id)sender
+{
+    // Open Clock.app using its bundle identifier
+    NSWorkspace *workspace = [NSWorkspace sharedWorkspace];
+    NSURL *clockAppURL = [workspace URLForApplicationWithBundleIdentifier:@"com.apple.mobiletimer"];
+    if (clockAppURL) {
+        NSWorkspaceOpenConfiguration *config = [NSWorkspaceOpenConfiguration configuration];
+        [workspace openApplicationAtURL:clockAppURL
+                          configuration:config
+                      completionHandler:^(NSRunningApplication *app, NSError *error) {
+            if (error) {
+                // Fallback: try opening by name if bundle identifier fails
+                [workspace launchApplication:@"Clock"];
+            }
+        }];
+    } else {
+        // Fallback: try opening by name if bundle identifier not found
+        [workspace launchApplication:@"Clock"];
+    }
 }
 
 - (void)openDateAndTimePrefs:(id)sender
