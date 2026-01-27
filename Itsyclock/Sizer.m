@@ -28,6 +28,10 @@ Sizer *SizePref = nil;
 }
 
 - (void)setSizePreference:(SizePreference)sizePreference {
+    // Ensure the value is within valid range (0-2)
+    if (sizePreference < SizePreferenceSmall || sizePreference > SizePreferenceLarge) {
+        sizePreference = SizePreferenceMedium; // Default to Medium
+    }
     _sizePreference = sizePreference;
     // Post notification on the main thread because the selector,
     // @selector(sizeChanged:), updates the UI and therefore must
@@ -37,6 +41,14 @@ Sizer *SizePref = nil;
         [[NSNotificationCenter defaultCenter]
          postNotificationName:kSizeDidChangeNotification object:nil];
     });
+}
+
+- (void)setNilValueForKey:(NSString *)key {
+    if ([key isEqualToString:@"sizePreference"]) {
+        [self setSizePreference:SizePreferenceMedium];
+    } else {
+        [super setNilValueForKey:key];
+    }
 }
 
 - (CGFloat)fontSize {

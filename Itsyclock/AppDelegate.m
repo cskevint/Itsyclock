@@ -39,6 +39,7 @@
         kShowEventDots:        @(YES),
         kUseColoredDots:       @(YES),
         kThemePreference:      @0, // System=0, Light=1, Dark=2
+        kSizePreference:       @1, // Small=0, Medium=1, Large=2
         kHideIcon:             @(NO),
         kShowLocation:         @(NO),
         kDoNotDrawOutlineAroundCurrentMonth: @(NO)
@@ -52,6 +53,12 @@
     NSInteger themePref = [defaults integerForKey:kThemePreference];
     if (themePref < 0 || themePref > 2) {
         [defaults setInteger:0 forKey:kThemePreference];
+    }
+    
+    // Set kSizePreference to defaultSizePref in the unlikely case it's invalid.
+    NSInteger sizePref = [defaults integerForKey:kSizePreference];
+    if (sizePref < 0 || sizePref > 2) {
+        [defaults setInteger:1 forKey:kSizePreference]; // Default to Medium
     }
 }
 

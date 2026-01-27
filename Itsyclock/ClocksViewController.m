@@ -56,7 +56,7 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
 
     _rowsStack = [NSStackView new];
     _rowsStack.orientation = NSUserInterfaceLayoutOrientationVertical;
-    _rowsStack.spacing = 0;
+    _rowsStack.spacing = 8;
 #ifdef NSStackViewAlignmentLeading
     _rowsStack.alignment = NSStackViewAlignmentLeading;
 #else
@@ -66,13 +66,20 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
 
     _footer = [NSStackView new];
     _footer.orientation = NSUserInterfaceLayoutOrientationHorizontal;
-    _footer.spacing = 6;
+    _footer.spacing = 10;
 #ifdef NSStackViewAlignmentCenterY
     _footer.alignment = NSStackViewAlignmentCenterY;
 #else
     _footer.alignment = NSLayoutAttributeCenterY; // fallback for older SDKs
 #endif
     _footer.translatesAutoresizingMaskIntoConstraints = NO;
+
+    // Spacer view to push both buttons to the right
+    NSView *spacer = [NSView new];
+    spacer.translatesAutoresizingMaskIntoConstraints = NO;
+    [spacer setContentHuggingPriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationHorizontal];
+    [spacer setContentCompressionResistancePriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationHorizontal];
+    [_footer addArrangedSubview:spacer];
 
     _btnPin = [MoButton new];
     _btnPin.buttonType = NSButtonTypeToggle;
@@ -98,12 +105,12 @@ static NSString * const kClocksStatusItemAutosaveName = @"ClocksStatusItem";
     [NSLayoutConstraint activateConstraints:@[
         [_stack.leadingAnchor constraintEqualToAnchor:v.leadingAnchor constant:12],
         [_stack.trailingAnchor constraintEqualToAnchor:v.trailingAnchor constant:-12],
-        [_stack.topAnchor constraintEqualToAnchor:v.topAnchor constant:12],
-        [_stack.bottomAnchor constraintEqualToAnchor:v.bottomAnchor constant:-12],
+        [_stack.topAnchor constraintEqualToAnchor:v.topAnchor constant:4],
+        [_stack.bottomAnchor constraintEqualToAnchor:v.bottomAnchor constant:0],
         [_rowsStack.leadingAnchor constraintEqualToAnchor:_stack.leadingAnchor],
         [_rowsStack.trailingAnchor constraintEqualToAnchor:_stack.trailingAnchor],
         [_footer.leadingAnchor constraintEqualToAnchor:_stack.leadingAnchor],
-        [_footer.trailingAnchor constraintEqualToAnchor:_stack.trailingAnchor]
+        [_footer.trailingAnchor constraintEqualToAnchor:_stack.trailingAnchor constant:0]
     ]];
 
     self.view = v;
@@ -403,10 +410,44 @@ static NSString *entryForTZ(NSString *key, NSString *tzID, NSArray<NSDictionary 
         NSTimeZone *tzb = [NSTimeZone timeZoneWithName:b[@"tz"]];
         if (!tza) return NSOrderedDescending;
         if (!tzb) return NSOrderedAscending;
-        NSInteger sa = [self secondsIntoDayForDate:now timeZone:tza];
-        NSInteger sb = [self secondsIntoDayForDate:now timeZone:tzb];
-        if (sa == sb) return NSOrderedSame;
-        return sa < sb ? NSOrderedAscending : NSOrderedDescending;
+        
+        // Compare the actual date/time in each timezone, not just time of day
+        // This ensures proper ordering when dates differ across timezones
+        NSCalendar *cal = [NSCalendar autoupdatingCurrentCalendar];
+        
+        NSCalendar *cala = [cal copy];
+        cala.timeZone = tza;
+        NSDateComponents *ca = [cala components:(NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond) fromDate:now];
+        
+        NSCalendar *calb = [cal copy];
+        calb.timeZone = tzb;
+        NSDateComponents *cb = [calb components:(NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitHour|NSCalendarUnitMinute|NSCalendarUnitSecond) fromDate:now];
+        
+        // Compare year
+        if (ca.year != cb.year) {
+            return ca.year < cb.year ? NSOrderedAscending : NSOrderedDescending;
+        }
+        // Compare month
+        if (ca.month != cb.month) {
+            return ca.month < cb.month ? NSOrderedAscending : NSOrderedDescending;
+        }
+        // Compare day
+        if (ca.day != cb.day) {
+            return ca.day < cb.day ? NSOrderedAscending : NSOrderedDescending;
+        }
+        // Compare hour
+        if (ca.hour != cb.hour) {
+            return ca.hour < cb.hour ? NSOrderedAscending : NSOrderedDescending;
+        }
+        // Compare minute
+        if (ca.minute != cb.minute) {
+            return ca.minute < cb.minute ? NSOrderedAscending : NSOrderedDescending;
+        }
+        // Compare second
+        if (ca.second != cb.second) {
+            return ca.second < cb.second ? NSOrderedAscending : NSOrderedDescending;
+        }
+        return NSOrderedSame;
     }];
 }
 
